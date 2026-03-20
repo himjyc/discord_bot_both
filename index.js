@@ -1,8 +1,9 @@
 const fs    =   require( 'fs' );
 // 1. 주요 클래스 가져오기
 const { Client, Events, GatewayIntentBits, Collection, GuildScheduledEvent, TextChannel } = require('discord.js');
-const schedule  =   require( 'node-schedule' );
-const { channelID, prefix, token } = require('./config.json');
+const schedule                      =   require( 'node-schedule' );
+const { channelID, prefix, token }  =   require('./config.json');
+const fnSchedule                    =   require( './components/Schedule');
 
 // 2. 클라이언트 객체 생성 (Guilds관련, 메시지관련 인텐트 추가)
 const client = new Client({ intents: [
@@ -11,6 +12,7 @@ const client = new Client({ intents: [
         GatewayIntentBits.MessageContent,
     ]});
 const commands  =   new Collection();
+
 const commandFiles  =   fs.readdirSync( './commands').filter( file => file.endsWith('.js'));
 
 for ( const file of commandFiles )
@@ -25,9 +27,9 @@ client.once(Events.ClientReady, readyClient => {
 
     // const channel   =    client.channels.fetch( channelID );
     const channel   =    client.channels.cache.get( channelID );
-    console.log( channel );
-    console.log( !channel );
-    console.log( !(channel instanceof TextChannel) );
+    // console.log( channel );
+    // console.log( !channel );
+    // console.log( !(channel instanceof TextChannel) );
 
     // if (!channel || !(channel instanceof TextChannel))
     if (!channel )
@@ -41,15 +43,20 @@ client.once(Events.ClientReady, readyClient => {
     //     channel.send(`[반복 알림] 현재 시간은 ${now} 입니다.`);
     //     console.log('매 분 알림 발송 완료');
     // });
-    schedule.scheduleJob('* * * * * *', () => {
-        const date  =   new Date();
-        const now   =   date.toLocaleString('ko-KR', { timeZone: 'Asia/Seoul' });
-        // channel.send(`[반복 알림] 현재 시간은 ${now} 입니다.`);
 
-        if ( date.getSeconds()%10 == 0 )
-            console.log(`매 초 알림 테스트 : ${now}`);
-    });
+    // schedule.scheduleJob('* * * * * *', ( currentDate ) => {
+    //     const date  =   new Date();
+    //     const now   =   date.toLocaleString('ko-KR', { timeZone: 'Asia/Seoul' });
+    //     // channel.send(`[반복 알림] 현재 시간은 ${now} 입니다.`);
+    //
+    //     console.log( currentDate instanceof Date)
+    //     fnSchedule.job( currentDate );
+    //
+    //     if ( date.getSeconds()%10 == 0 )
+    //         console.log(`매 초 알림 테스트 : ${now}`);
+    // });
 
+    // console.log(fnField.update())
 });
 
 // 4. 누군가 ping을 작성하면 pong으로 답장한다.
@@ -76,6 +83,12 @@ client.on( 'messageCreate', message => {
     catch ( e )
     {
         console.error(e);
+    }
+    finally
+    {
+
+        // console.log( bothtime );
+        // bothtime[0].time = 'update' + Math.random();
     }
 
     Log.log( message );
