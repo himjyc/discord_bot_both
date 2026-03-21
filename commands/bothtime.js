@@ -1,5 +1,4 @@
 // import table    from 'table';
-const {table}         =   require( 'table' );
 const metaFieldboth =   require( '../static/both/fieldboth.js');
 // const AsciiTable         =   require( 'ascii-table' );
 
