@@ -1,6 +1,7 @@
-const { CT, 점령전, 개미 } =   require( '../enum/constants.js' );
+const { CT, 점령전, 개미, 공성전, 샌드윔 } =   require( '../enum/constants.js' );
 const date1     =   new Date(2026, 1, 1, 17, 0, 0);
 const date2     =   new Date(2026, 1, 1, 20, 0, 0);
+const date3     =   new Date(2026, 1, 1, 21, 0, 0);
 
 var content   =
     {
@@ -14,6 +15,24 @@ var content   =
                 "message" : [],
                 "repeat" : [600000, 0],
                 "crondayOfWeek" : () => '6'
+            },
+            {
+                "name" : 공성전,
+                "time" : date2,
+                "itemDesc" : [공성전],
+                "type" : "",
+                "message" : [],
+                "repeat" : [600000, 0],
+                "crondayOfWeek" : () => '0'
+            },
+            {
+                "name" : 샌드윔,
+                "time" : date3,
+                "itemDesc" : [샌드윔],
+                "type" : "",
+                "message" : [],
+                "repeat" : [600000, 0],
+                "crondayOfWeek" : () => '0'
             },
             {
                 "name" : 개미,

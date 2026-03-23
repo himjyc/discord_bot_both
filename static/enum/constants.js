@@ -28,6 +28,8 @@ module.exports  =
         ND : 'ND',
         CT : 'CT',
         오만탐 : '오만탐',
+        공성전 : '공성전',
+        샌드윔 : '샌드윔',
         Colors : {
             reset: "\u001b[0m",
             red: "\u001b[31m",
