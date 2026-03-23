@@ -32,7 +32,7 @@ var content   =
                 "type" : "",
                 "message" : [],
                 "repeat" : [600000, 0],
-                "crondayOfWeek" : () => '0'
+                "crondayOfWeek" : () => '5,6'
             },
             {
                 "name" : 개미,
