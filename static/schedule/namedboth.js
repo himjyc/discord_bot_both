@@ -35,24 +35,20 @@ var namedboth   =
                 "itemDesc" : [흑장로],
                 "type" : "",
                 // "message" : [ '```ansi\n' + `${Colors.white}[ {title} ]\n${Colors.green}{time}후 종료됩니다.` + '```', '```ansi' + `\n${Colors.white}[ {title} ]\n${Colors.green}종료되었습니다.` + '```' ],
-                "message" : [ '[ {title} ]\n{time}후 종료됩니다.', '[ {title} ]\n종료되었습니다.' ],
-                "repeat" : [600000, 0]
+                "message" : [ '[ {title} ]\n{time}후 종료됩니다.', '[ {title} ]\n{time}후 종료됩니다.', '[ {title} ]\n종료되었습니다.' ],
+                "repeat" : [1200000, 600000, 0]
             },
             {
                 "name" : "오만탐",
                 "time" : date4,
                 "itemDesc" : [오만탐],
-                "type" : "",
-                "message" : [],
-                "repeat" : []
+                "type" : ""
             },
             {
                 "name" : "오만탐",
                 "time" : date5,
                 "itemDesc" : [오만탐],
-                "type" : "",
-                "message" : [],
-                "repeat" : []
+                "type" : ""
             }
         ]
     }

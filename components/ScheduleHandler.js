@@ -103,7 +103,7 @@ module.exports  =
             cronExpression.splice( 2, 1, date.getHours().toString() );
 
             if ( item.crondayOfWeek )
-                cronExpression.splice( 3, 1, item.crondayOfWeek() );
+                cronExpression.splice( 5, 1, item.crondayOfWeek() );
 
             console.log( cronExpression.join(' ') )
 

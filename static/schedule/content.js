@@ -13,7 +13,7 @@ var content   =
                 "itemDesc" : [점령전],
                 "type" : "",
                 "message" : [],
-                "repeat" : [600000, 0],
+                "repeat" : [1200000, 600000, 0],
                 "crondayOfWeek" : () => '6'
             },
             {
@@ -22,7 +22,7 @@ var content   =
                 "itemDesc" : [공성전],
                 "type" : "",
                 "message" : [],
-                "repeat" : [600000, 0],
+                "repeat" : [1200000, 600000, 0],
                 "crondayOfWeek" : () => '0'
             },
             {
@@ -31,7 +31,7 @@ var content   =
                 "itemDesc" : [샌드윔],
                 "type" : "",
                 "message" : [],
-                "repeat" : [600000, 0],
+                "repeat" : [1200000, 600000, 0],
                 "crondayOfWeek" : () => '5,6'
             },
             {
@@ -40,7 +40,7 @@ var content   =
                 "itemDesc" : [개미],
                 "type" : "",
                 "message" : [],
-                "repeat" : [600000, 0],
+                "repeat" : [1200000, 600000, 0],
                 "crondayOfWeek" : () => '1,4'
             }
         ]

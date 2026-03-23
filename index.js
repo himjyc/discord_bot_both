@@ -6,7 +6,7 @@ const { Client, Events, GatewayIntentBits,
 } = require('discord.js');
 const schedule                      =   require( 'node-schedule' );
 const { guildID, channelID, prefix, token }  =   require('./config.json');
-const commSchedule                    =   require( './components/Schedule');
+const fnSchedule                    =   require( './components/Schedule');
 const client                    =   require( './client' );
 // 2. 클라이언트 객체 생성 (Guilds관련, 메시지관련 인텐트 추가)
 // const client = new Client({ intents: [
@@ -54,7 +54,7 @@ client.once(Events.ClientReady, readyClient => {
     //
     //     // console.log( currentDate instanceof Date)
     //
-    //     commSchedule.job( currentDate );
+    //     fnSchedule.job( currentDate );
     //
     //     if ( date.getSeconds()%10 == 0 )
     //         console.log(`매 초 알림 테스트 : ${now}`);
@@ -71,9 +71,9 @@ client.once(Events.ClientReady, readyClient => {
     //     console.log('Cron Job: 매 분 10초에 실행되었습니다.');
     // });
 
-    // commSchedule.deleteAll();
-    commSchedule.create( 'Namedboth' );
-    commSchedule.create( 'Content' );
+    // fnSchedule.deleteAll();
+    fnSchedule.create( 'Namedboth' );
+    fnSchedule.create( 'Content' );
 
 
     // channel.send( '```ansi\n' + `\u001b[37m[ 발록 ]\n\u001b[32m\n시작입니다.\u001b[0m` + '```' );
@@ -131,12 +131,17 @@ client.on( 'messageCreate', message => {
     Log.log( message );
 });
 
-// //  새 멤버가 서버에 들어왔을 때 알림
-// client.on('guildMemberAdd', (member) => {
-//     const channel = member.guild.channels.cache.get(CHANNEL_ID);
-//     if (!channel) return;
+//  새 멤버가 서버에 들어왔을 때 알림
+// client.on('guildMemberAdd', async (member) => {
 //
+//     console.log( 'guildMemberAdd  check 1 ')
+//     const channel   =   member.guild.channels.cache.get(channelID);
+//
+//     if (!channel)
+//         return;
+//     console.log( 'guildMemberAdd  check 2 ')
 //     channel.send(`👋 안녕하세요 ${member.user}님, 서버에 오신 것을 환영합니다!`);
+//     console.log( 'guildMemberAdd  check 3 ')
 // });
 
 // 5. 시크릿키(토큰)을 통해 봇 로그인 실행
