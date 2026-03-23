@@ -1,4 +1,7 @@
-const metaFieldboth     =   require( '../../static/both/fieldboth.js');
+const meta              =   require( '../../static/schedule/fieldboth.js');
+const schedule          =   require( 'node-schedule' );
+const fnSchedule        =   require( '../Schedule' );
+const fnScheduleHandler =   require( '../ScheduleHandler' );
 
 module.exports =
     {
@@ -44,14 +47,14 @@ module.exports =
             let inS     =   parseInt( inputValue.slice( 4, 6 ) );
 
             let date    =   new Date();
-            date.getFullYear();
-            date.getMonth();
-            date.getDate();
+            // date.getFullYear();
+            // date.getMonth();
+            // date.getDate();
 
-            for ( let i = 0 ; i < metaFieldboth.list.length ; i++ )
+            for (let i = 0 ; i < meta.list.length ; i++ )
             {
 
-                let item        =   metaFieldboth.list[i];
+                let item        =   meta.list[i];
                 let date        =   item.time;
                 let interval    =   item.interval;
                 console.log( 'interval  = '+ interval);
@@ -66,10 +69,25 @@ module.exports =
                 console.log( '■ changed date  :  '+date.toLocaleString() )
             }
 
-            metaFieldboth.initialize    =   true;
+            meta.initialize    =   true;
             console.log( 'Fieldboth.js : set() | end' )
 
-            // console.log( metaFieldboth )
+            // console.log( meta )
             return 'set';
+        },
+
+        buildJob()
+        {
+
+            for ( let i = 0 ; i < meta.list.length ; i++ )
+            {
+                fnScheduleHandler.buildRepeatSchedule( meta, this, i );
+            }
+        },
+
+        deleteJob()
+        {
+
+            fnSchedule.delete( meta.prefix );
         }
     }

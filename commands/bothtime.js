@@ -1,6 +1,8 @@
 // import table    from 'table';
-const metaFieldboth =   require( '../static/both/fieldboth.js');
+const metaFieldboth =   require( '../static/schedule/fieldboth.js');
 // const AsciiTable         =   require( 'ascii-table' );
+const fieldBothSetting  =   require( './fieldBothSetting.js' );
+const { prefix }  =   require('../config.json');
 
 
 module.exports =  {
@@ -16,7 +18,6 @@ module.exports =  {
         {
 
             console.log( 'bothtime.js : execute() | start' )
-
             console.log( metaFieldboth.initialize );
             if ( !metaFieldboth.initialize )
                 throw new Error();
@@ -24,9 +25,9 @@ module.exports =  {
             for ( let i = 0 ; i < metaFieldboth.list.length ; i++ )
             {
 
-                let item    =   metaFieldboth.list[i];
-                let time    =   item.time;
-                let list    =   item.list;
+                let object  =   metaFieldboth.list[i];
+                let time    =   object.time;
+                let item    =   object.itemDesc;
 
                 const hours     =   String(time.getHours()).padStart(2, '0');
                 const minutes   =   String(time.getMinutes()).padStart(2, '0');
@@ -44,23 +45,22 @@ module.exports =  {
                 else if ( 13<= iHours && iHours <= 18 ) timePrefixText = '오후';
                 else if ( 19<= iHours && iHours <= 23 ) timePrefixText = '저녁';
 
-                output  +=  "```ansi\n\u001b[33m ■ ("+timePrefixText+") "+hours+"시 "+minutes+"분("+seconds+")  \u001b[32m "+list.join(' ')+"``` \n"
+                output  +=  "```ansi\n\u001b[33m ■ ("+timePrefixText+") "+hours+"시 "+minutes+"분("+seconds+")  \u001b[34m "+item.join(' ')+"``` \n"
             }
 
-            output  +=  "```ansi\n\u001b[31m 발록 \u001b[34m 12시 ~ 14시, 21시 ~ 22시``` \n";
-            output  +=  "```ansi\n\u001b[31m 아크모 \u001b[34m 6시간  " +
-                        "\u001b[31m 거드 \u001b[34m 12시간  " +
-                        "\u001b[31m 데몬 \u001b[34m 4시간  " +
-                        "\u001b[31m 카스파 \u001b[34m 6시간``` \n";
+            output  +=  "```ansi\n\u001b[31m 발록 \u001b[32m 12시 ~ 14시, 21시 ~ 22시``` \n";
+            output  +=  "```ansi\n\u001b[31m 아크모 \u001b[32m 6시간  " +
+                        "\u001b[31m 거드 \u001b[32m 12시간  " +
+                        "\u001b[31m 데몬 \u001b[32m 4시간  " +
+                        "\u001b[31m 카스파 \u001b[32m 6시간``` \n";
 
             message.channel.send( output );
-
             console.log( 'bothtime.js : execute() | end' )
         }
         catch ( e )
         {
             console.error(e);
-            output  =   '필드보스 시간이 설정되지 않았습니다.\n/필드보스시간 을 사용하여 시간을 설정하세요.'
+            output  =   `필드보스 시간이 설정되지 않았습니다.\n${prefix}${fieldBothSetting.name} 을 사용하여 전체탐시간을 설정하세요.`
             message.channel.send(output)
         }
 
