@@ -7,8 +7,8 @@ const {Colors}          =   require( '../static/enum/constants' );
 const repeat            =   [1200000, 600000, 300000, 60000, 30000, 0];
 // const defaultMessage    =   '```ansi\n' + `${Colors.white} [ {title} ]\n${Colors.green} {time}{timeunit} 입니다.${Colors.reset}`+'```';
 // const endMessage        =   '```ansi\n' + `${Colors.white} [ {title} ]\n${Colors.green} 시작입니다.${Colors.reset}` + '```';
-const defaultMessage    =   '[ {title} ]\n{time}{timeunit} 입니다.';
-const endMessage        =   '[ {title} ]\n시작입니다.';
+const defaultMessage    =   '[ {title} ]\n\n{time}{timeunit} 입니다.';
+const endMessage        =   '[ {title} ]\n\n시작입니다.';
 const message           =   [
                                 defaultMessage,
                                 defaultMessage,
