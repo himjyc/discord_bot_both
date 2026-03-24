@@ -28,7 +28,7 @@ module.exports =
             let a오만탐    =   meta.list.filter( item => item.name == '오만탐' )
 
 
-            let templateCronExpression  =   [ '2,12,24,36,48', '*', '*', '*', '*', '*' ];
+            let templateCronExpression  =   [ '2,16,31,46', '*', '*', '*', '*', '*' ];
             const channel   =    client.channels.cache.get( channelID );
 
             // for ( let item of a오만탐 )
@@ -38,7 +38,7 @@ module.exports =
                 let item            =   a오만탐[i];
                 let date            =   item.time;
                 let cronExpression  =   templateCronExpression;
-                let iDuration       =   7;
+                let iDuration       =   8;
                 // console.log( item )
 
                 // cronExpression.splice( 0, 1, date.getSeconds().toString() );
@@ -61,8 +61,8 @@ module.exports =
                     function( currentDate )
                     {
 
-                        let message     =   '# 진행중 : ' + omanTimeItemNotice.exist.join(', ') + '\n' +
-                                            '# 완료 : ' + omanTimeItemNotice.end.join( ', ' );
+                        let message     =   '진행중 : ' + omanTimeItemNotice.exist.join(', ') + '\n' +
+                                            '완료 : ' + omanTimeItemNotice.end.join( ', ' );
                         channel.send( message );
                     }
                 )
