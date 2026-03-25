@@ -39,6 +39,9 @@ module.exports =  {
             sendMessage =   '날짜 포맷이 잘못되었습니다. \n전체탐 시간을 숫자로 입력해주세요.\nex) AM 9시 10분 21초 : /필드보스시간 091021\nex) PM 9시 10분 21초 : /필드보스시간 211021 와 같이 입력하세요.';
         }
 
-        return message.channel.send(sendMessage);
+        return message.channel.send({
+            content : sendMessage,
+            flags : [4096]
+        });
     }
 }

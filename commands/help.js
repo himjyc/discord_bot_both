@@ -20,6 +20,9 @@ module.exports =  {
                 list.push( prefix + command.name );
         }
 
-        return message.channel.send( list.join( '\n' ) );
+        return message.channel.send({
+            content : list.join( '\n' ),
+            flags : [4096]
+        } );
     }
 }

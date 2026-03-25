@@ -61,7 +61,10 @@ module.exports =  {
         {
             console.error(e);
             output  =   `필드보스 시간이 설정되지 않았습니다.\n${prefix}${fieldBothSetting.name} 을 사용하여 전체탐시간을 설정하세요.`
-            message.channel.send(output)
+            message.channel.send({
+                content : output,
+                flags : [4096]
+            })
         }
 
         return null;
