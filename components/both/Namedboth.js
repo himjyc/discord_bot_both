@@ -28,7 +28,8 @@ module.exports =
             let a오만탐    =   meta.list.filter( item => item.name == '오만탐' )
 
 
-            let templateCronExpression  =   [ '2,16,31,46', '*', '*', '*', '*', '*' ];
+            let templateCronExpression  =   [ '45', '*', '*', '*', '*', '*' ];
+            // let templateCronExpression  =   [ '2,16,31,46', '*', '*', '*', '*', '*' ];
             const channel   =    client.channels.cache.get( channelID );
 
             // for ( let item of a오만탐 )
