@@ -4,6 +4,11 @@ const meta          =   require( '../../static/schedule/content');
 
 module.exports =
     {
+        set()
+        {
+
+            this.buildJob();
+        },
         buildJob()
         {
 

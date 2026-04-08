@@ -5,12 +5,12 @@ const fs                =   require( 'fs' );
 
 module.exports =
     {
-        create( filename )
+        create( filename, time )
         {
 
             // console.log( __dirname )
             let entity  =   require( `./both/${filename}` );
-            entity.buildJob();
+            entity.set( time );
         },
 
         delete( prefix )

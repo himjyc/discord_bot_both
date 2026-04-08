@@ -14,6 +14,9 @@ const client                    =   require( './client' );
 //         GatewayIntentBits.GuildMessages,
 //         GatewayIntentBits.MessageContent
 //     ]});
+
+const args      =   process.argv;
+
 const commands  =   new Collection();
 
 const commandFiles  =   fs.readdirSync( './commands').filter( file => file.endsWith('.js'));
@@ -75,6 +78,18 @@ client.once(Events.ClientReady, readyClient => {
     fnSchedule.create( 'Namedboth' );
     fnSchedule.create( 'Content' );
 
+    console.log( args)
+
+    if ( args.length > 2 )
+    {
+
+        fnSchedule.create( 'Fieldboth', args[2] );
+    }
+    else
+    {
+        console.log( Object.keys( schedule.scheduledJobs ) );
+    }
+
 
     // channel.send( '```ansi\n' + `\u001b[37m[ 발록 ]\n\u001b[32m\n시작입니다.\u001b[0m` + '```' );
     // channel.send( '# [ 발록 ]\n\n시작입니다.' );
@@ -86,7 +101,7 @@ client.once(Events.ClientReady, readyClient => {
 
     // channel.send( '```ansi\n' + `\u001b[37m[ 발록 ]\n\u001b[32m\n시작입니다.\u001b[0m` + '```' );
 
-    console.log( Object.keys( schedule.scheduledJobs ) );
+    // console.log( Object.keys( schedule.scheduledJobs ) );
 
     // for ( const name in schedule.scheduledJobs )
     // {

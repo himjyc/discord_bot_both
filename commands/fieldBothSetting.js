@@ -16,22 +16,17 @@ module.exports =  {
         try
         {
 
-            if ( !fnFieldboth.validInputValue( args ) )
-                throw new Error();
+            // if ( args.length == 0  )
+            //     throw new Error();
 
-            fnFieldboth.set( args[0] );
+            let result  =   fnFieldboth.set( args[0] );
+            sendMessage =   result.message;
 
-            fnFieldboth.deleteJob();
-            fnFieldboth.buildJob();
-
-            console.log( Object.keys( schedule.scheduledJobs ) );
-
-            // for ( const name in schedule.scheduledJobs )
-            // {
-            //     // console.log( schedule.scheduledJobs[name].pendingInvocations[0].recurrenceRule)
-            //     console.log( schedule.scheduledJobs[name].pendingInvocations[0].fireDate.toLocaleString())
-            // }
-
+        // || !fnFieldboth.validInputValue( args[0] )
+        //     fnFieldboth.setTime( args[0] );
+        //
+        //     fnFieldboth.deleteJob();
+        //     fnFieldboth.buildJob();
         }
         catch ( e )
         {
@@ -39,7 +34,9 @@ module.exports =  {
             sendMessage =   '날짜 포맷이 잘못되었습니다. \n전체탐 시간을 숫자로 입력해주세요.\nex) AM 9시 10분 21초 : /필드보스시간 091021\nex) PM 9시 10분 21초 : /필드보스시간 211021 와 같이 입력하세요.';
         }
 
-        return message.channel.send({
+        console.log( sendMessage)
+
+        message.channel.send({
             content : sendMessage,
             flags : [4096]
         });

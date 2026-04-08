@@ -6,7 +6,7 @@ const fnScheduleHandler =   require( '../ScheduleHandler' );
 module.exports =
     {
 
-        validInputValue( args )
+        validInputValue( time )
         {
 
             let valid   =   true;
@@ -14,10 +14,8 @@ module.exports =
             try
             {
 
-                if ( args.length == 0 || args[0].trim().length != 6 || !Number.isInteger( parseInt(args[0].trim()) ))
+                if ( time.length == 0 || time.trim().length != 6 || !Number.isInteger( parseInt(time.trim()) ))
                     throw new Error();
-
-                let time    =   args[0];
 
                 if ( time.slice( 0, 2 ) > 23 || time.slice( 2, 4 ) > 59 || time.slice( 4, 6 ) > 59 )
                     throw new Error();
@@ -38,7 +36,45 @@ module.exports =
             // new Date().getDate()
             return 'update';
         },
-        set( inputValue )
+        set( time )
+        {
+
+            let action      =   'continue';
+            let message     =   '필드 보스 시간이 정상적으로 등록되었습니다.';
+
+            console.log( time )
+            try
+            {
+
+                if ( !this.validInputValue( time ) )
+                    throw new Error();
+
+                this.setTime( time );
+                this.deleteJob();
+                this.buildJob();
+
+                console.log( Object.keys( schedule.scheduledJobs ) );
+
+                // for ( const name in schedule.scheduledJobs )
+                // {
+                //     // console.log( schedule.scheduledJobs[name].pendingInvocations[0].recurrenceRule)
+                //     console.log( schedule.scheduledJobs[name].pendingInvocations[0].fireDate.toLocaleString())
+                // }
+
+            }
+            catch ( e )
+            {
+                console.error(e);
+                message     =   '날짜 포맷이 잘못되었습니다. \n전체탐 시간을 숫자로 입력해주세요.\nex) AM 9시 10분 21초 : /필드보스시간 091021\nex) PM 9시 10분 21초 : /필드보스시간 211021 와 같이 입력하세요.';
+                action      =   'invalid';
+            }
+
+            return {
+                'action' : action,
+                'message' : message
+            }
+        },
+        setTime( inputValue )
         {
 
             console.log( 'Fieldboth.js : set() | start' )

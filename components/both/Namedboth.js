@@ -8,11 +8,14 @@ const omanTimeItemNotice    =   require( '../../template/omanTimeItemNotice');
 
 module.exports =
     {
+        set()
+        {
+
+            this.buildJob();
+        },
 
         buildJob()
         {
-
-
 
             for ( let i = 0 ; i < meta.list.length ; i++ )
             {
@@ -22,6 +25,7 @@ module.exports =
 
             this.setOmannotice()
         },
+
         setOmannotice()
         {
 
