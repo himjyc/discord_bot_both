@@ -23,7 +23,7 @@ module.exports =
                 fnScheduleHandler.buildRepeatSchedule( meta, this, i );
             }
 
-            this.setOmannotice()
+            // this.setOmannotice()
         },
 
         setOmannotice()
