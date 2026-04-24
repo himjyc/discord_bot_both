@@ -125,6 +125,5 @@ module.exports =
         {
 
             fnSchedule.delete( meta.prefix );
-            meta.initialize     =   false;
         }
     }

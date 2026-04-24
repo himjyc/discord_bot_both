@@ -1,6 +1,6 @@
-const schedule          =   require( 'node-schedule' );
-const fnScheduleHandler =   require( '../ScheduleHandler' );
-const meta              =   require( '../../static/schedule/content');
+const schedule      =   require( 'node-schedule' );
+const schedulefn    =   require( '../ScheduleHandler' );
+const meta          =   require( '../../static/schedule/content');
 
 module.exports =
     {
@@ -14,7 +14,7 @@ module.exports =
 
             for ( let i = 0 ; i < meta.list.length ; i++ )
             {
-                fnScheduleHandler.buildRepeatSchedule( meta, this, i );
+                schedulefn.buildRepeatSchedule( meta, this, i );
             }
         }
     }

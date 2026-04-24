@@ -90,8 +90,6 @@ client.once(Events.ClientReady, readyClient => {
         console.log( Object.keys( schedule.scheduledJobs ) );
     }
 
-    fnSchedule.otherJob();
-
 
     // channel.send( '```ansi\n' + `\u001b[37m[ 발록 ]\n\u001b[32m\n시작입니다.\u001b[0m` + '```' );
     // channel.send( '# [ 발록 ]\n\n시작입니다.' );
