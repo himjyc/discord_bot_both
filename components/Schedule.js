@@ -1,7 +1,8 @@
+const fs                =   require( 'fs' );
 const metaFieldboth     =   require( '../static/schedule/fieldboth.js');
 const schedule          =   require( 'node-schedule' );
 const { CT, FD, ND }    =   require( '../static/enum/constants.js' );
-const fs                =   require( 'fs' );
+const metaOther         =   require( './other/Other' );
 
 module.exports =
     {
@@ -33,6 +34,13 @@ module.exports =
 
             schedule.gracefulShutdown();
         },
+
+        otherJob()
+        {
+
+            // 점건 시 수요일 5시에 필드보스 스케줄 삭제
+            metaOther.initInspection();
+        }
 
         // job( currentDate )
         // {
