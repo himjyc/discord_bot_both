@@ -1,8 +1,7 @@
-const { CT, 점령전, 개미, 공성전, 샌드윔, 무한대전 } =   require( '../enum/constants.js' );
+const { CT, 점령전, 개미, 공성전, 샌드윔 } =   require( '../enum/constants.js' );
 const date1     =   new Date(2026, 1, 1, 17, 0, 0);
 const date2     =   new Date(2026, 1, 1, 20, 0, 0);
 const date3     =   new Date(2026, 1, 1, 21, 0, 0);
-const date4     =   new Date(2026, 1, 1, 21, 30, 0);
 
 var content   =
     {
@@ -43,15 +42,6 @@ var content   =
                 "message" : [],
                 "repeat" : [1200000, 600000, 0],
                 "crondayOfWeek" : () => '1,4'
-            },
-            {
-                "name" : 무한대전,
-                "time" : date4,
-                "itemDesc" : [무한대전],
-                "type" : "",
-                "message" : [],
-                "repeat" : [600000, 60000, 0],
-                "crondayOfWeek" : () => '1,2,3,4,5'
             }
         ]
     }
